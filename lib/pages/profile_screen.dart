@@ -1,12 +1,16 @@
-import 'package:cours/pages/workout_screen.dart';
+import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
-import '../model/meal.dart';
+import 'package:cours/model/meal.dart';
+import 'meals_detail_screen.dart';
+import 'package:cours/pages/workout_screen.dart';
 
 import 'package:vector_math/vector_math_64.dart' as math;
+
+
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -194,120 +198,127 @@ class ProfileScreen extends StatelessWidget {
                     height: 20,
                   ),
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => WorkoutScreen(),
-                          ),
-                        );
+                    child: OpenContainer(
+                      closedElevation: 0,
+                      transitionType: ContainerTransitionType.fade,
+                      transitionDuration: const Duration(milliseconds: 1000),
+                      closedColor: const Color(0xFFE9E9E9),
+                      openBuilder: (context, _) {
+                        return WorkoutScreen();
                       },
-                      child: Container(
-                        margin: const EdgeInsets.only(
-                            bottom: 10, left: 32, right: 32),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular((30))),
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              const Color(0xFF20008B),
-                              const Color(0xFF200087),
-                            ],
-                          ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 16.0, left: 16),
-                              child: Text(
-                                "YOUR NEXT WORKOUT",
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 4, left: 16),
-                              child: Text(
-                                "UPPER BODY",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Row(
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),
-                                      color: const Color(0xFF5B4D9D),
-                                    ),
-                                    padding: const EdgeInsets.all(10),
-                                    child: Image.asset(
-                                      "assets/chest_icon.png",
-                                      width: 50,
-                                      height: 50,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),
-                                      color: const Color(0xFF5B4D9D),
-                                    ),
-                                    padding: const EdgeInsets.all(10),
-                                    child: Image.asset(
-                                      "assets/back.png",
-                                      width: 50,
-                                      height: 50,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),
-                                      color: const Color(0xFF5B4D9D),
-                                    ),
-                                    padding: const EdgeInsets.all(10),
-                                    child: Image.asset(
-                                      "assets/hand_biceps.png",
-                                      width: 50,
-                                      height: 50,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
+                      closedBuilder: (context, VoidCallback openContainer) {
+                        return GestureDetector(
+                          onTap: (openContainer),
+                          child: Container(
+                            margin: const EdgeInsets.only(
+                                bottom: 10, left: 32, right: 32),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular((30))),
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  const Color(0xFF20008B),
+                                  const Color(0xFF200087),
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 16.0, left: 16),
+                                  child: Text(
+                                    "YOUR NEXT WORKOUT",
+                                    style: TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 4, left: 16),
+                                  child: Text(
+                                    "UPPER BODY",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          color: const Color(0xFF5B4D9D),
+                                        ),
+                                        padding: const EdgeInsets.all(10),
+                                        child: Image.asset(
+                                          "assets/chest_icon.png",
+                                          width: 50,
+                                          height: 50,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          color: const Color(0xFF5B4D9D),
+                                        ),
+                                        padding: const EdgeInsets.all(10),
+                                        child: Image.asset(
+                                          "assets/back.png",
+                                          width: 50,
+                                          height: 50,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)),
+                                          color: const Color(0xFF5B4D9D),
+                                        ),
+                                        padding: const EdgeInsets.all(10),
+                                        child: Image.asset(
+                                          "assets/hand_biceps.png",
+                                          width: 50,
+                                          height: 50,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
@@ -465,85 +476,96 @@ class _MealCard extends StatelessWidget {
         right: 20,
         bottom: 10,
       ),
-      child: Material(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        elevation: 4,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Flexible(
-              fit: FlexFit.tight,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                child: Image.asset(
-                  meal.imagePath,
-                  width: 150,
-                  fit: BoxFit.fill,
-                ),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => MealDetailScreen(
+                meal: meal,
               ),
             ),
-            Flexible(
-              fit: FlexFit.tight,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      meal.mealTime,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                        color: Colors.blueGrey,
+          );
+        },
+        child: Material(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          elevation: 4,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Flexible(
+                fit: FlexFit.tight,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  child: Image.asset(
+                    meal.imagePath,
+                    width: 150,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Flexible(
+                fit: FlexFit.tight,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        height: 5,
                       ),
-                    ),
-                    Text(
-                      meal.name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Text(
-                      "${meal.kiloCaloriesBurnt} kcal",
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                        color: Colors.blueGrey,
-                      ),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.access_time,
-                          size: 15,
-                          color: Colors.black12,
+                      Text(
+                        meal.mealTime,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Colors.blueGrey,
                         ),
-                        SizedBox(
-                          width: 4,
+                      ),
+                      Text(
+                        meal.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18,
+                          color: Colors.black,
                         ),
-                        Text(
-                          "${meal.timeTaken} min",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                            color: Colors.blueGrey,
+                      ),
+                      Text(
+                        "${meal.kiloCaloriesBurnt} kcal",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Colors.blueGrey,
+                        ),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.access_time,
+                            size: 15,
+                            color: Colors.black12,
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                  ],
+                          SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            "${meal.timeTaken} min",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 16),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
