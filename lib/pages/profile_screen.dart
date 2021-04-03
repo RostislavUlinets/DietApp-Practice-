@@ -1,9 +1,10 @@
+import 'package:cours/pages/workout_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
-import 'model/meal.dart';
+import '../model/meal.dart';
 
 import 'package:vector_math/vector_math_64.dart' as math;
 
@@ -193,109 +194,119 @@ class ProfileScreen extends StatelessWidget {
                     height: 20,
                   ),
                   Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(
-                          bottom: 10, left: 32, right: 32),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular((30))),
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            const Color(0xFF20008B),
-                            const Color(0xFF200087),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => WorkoutScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(
+                            bottom: 10, left: 32, right: 32),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular((30))),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              const Color(0xFF20008B),
+                              const Color(0xFF200087),
+                            ],
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 16.0, left: 16),
+                              child: Text(
+                                "YOUR NEXT WORKOUT",
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 4, left: 16),
+                              child: Text(
+                                "UPPER BODY",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      color: const Color(0xFF5B4D9D),
+                                    ),
+                                    padding: const EdgeInsets.all(10),
+                                    child: Image.asset(
+                                      "assets/chest_icon.png",
+                                      width: 50,
+                                      height: 50,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      color: const Color(0xFF5B4D9D),
+                                    ),
+                                    padding: const EdgeInsets.all(10),
+                                    child: Image.asset(
+                                      "assets/back.png",
+                                      width: 50,
+                                      height: 50,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      color: const Color(0xFF5B4D9D),
+                                    ),
+                                    padding: const EdgeInsets.all(10),
+                                    child: Image.asset(
+                                      "assets/hand_biceps.png",
+                                      width: 50,
+                                      height: 50,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16.0, left: 16),
-                            child: Text(
-                              "YOUR NEXT WORKOUT",
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 4, left: 16),
-                            child: Text(
-                              "UPPER BODY",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: <Widget>[
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    color: const Color(0xFF5B4D9D),
-                                  ),
-                                  padding: const EdgeInsets.all(10),
-                                  child: Image.asset(
-                                    "assets/chest_icon.png",
-                                    width: 50,
-                                    height: 50,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    color: const Color(0xFF5B4D9D),
-                                  ),
-                                  padding: const EdgeInsets.all(10),
-                                  child: Image.asset(
-                                    "assets/back.png",
-                                    width: 50,
-                                    height: 50,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    color: const Color(0xFF5B4D9D),
-                                  ),
-                                  padding: const EdgeInsets.all(10),
-                                  child: Image.asset(
-                                    "assets/hand_biceps.png",
-                                    width: 50,
-                                    height: 50,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
                       ),
                     ),
                   ),
@@ -312,7 +323,7 @@ class ProfileScreen extends StatelessWidget {
 class _IngredientProgress extends StatelessWidget {
   final String ingredient;
   final int leftAmount;
-  final double progress,width;
+  final double progress, width;
   final Color progressColor;
 
   const _IngredientProgress(
@@ -320,7 +331,8 @@ class _IngredientProgress extends StatelessWidget {
       this.ingredient,
       this.leftAmount,
       this.progress,
-      this.progressColor, this.width})
+      this.progressColor,
+      this.width})
       : super(key: key);
 
   @override
@@ -336,16 +348,32 @@ class _IngredientProgress extends StatelessWidget {
           ),
         ),
         Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(
-              height: 10,
-              width: width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-                color: Colors.grey,
-              ),
+            Stack(
+              children: [
+                Container(
+                  height: 10,
+                  width: width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    color: Colors.black12,
+                  ),
+                ),
+                Container(
+                  height: 10,
+                  width: width * progress,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    color: progressColor,
+                  ),
+                ),
+              ],
             ),
-            SizedBox(width: 10,),
+            SizedBox(
+              width: 10,
+            ),
             Text("${leftAmount} g left"),
           ],
         ),
