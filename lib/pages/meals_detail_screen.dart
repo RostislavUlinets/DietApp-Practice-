@@ -13,6 +13,8 @@ class MealDetailScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            snap: true,
+            floating: true,
             backgroundColor: const Color(0xFF200087),
             expandedHeight: 300,
             shape: RoundedRectangleBorder(
@@ -96,9 +98,9 @@ class MealDetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-            SizedBox(
-              height: 15,
-            ),
+                SizedBox(
+                  height: 15,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
@@ -110,9 +112,9 @@ class MealDetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-            SizedBox(
-              height: 10,
-            ),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
@@ -124,10 +126,37 @@ class MealDetailScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(bottom: 6),
                           child: Text(
                             meal.ingredients[i],
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                     ],
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    "PREPARATION",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 14,
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: Text(
+                    meal.preparation,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],

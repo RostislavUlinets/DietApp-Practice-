@@ -10,8 +10,6 @@ import 'package:cours/pages/workout_screen.dart';
 
 import 'package:vector_math/vector_math_64.dart' as math;
 
-
-
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -495,13 +493,27 @@ class _MealCard extends StatelessWidget {
             children: <Widget>[
               Flexible(
                 fit: FlexFit.tight,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  child: Image.asset(
-                    meal.imagePath,
-                    width: 150,
-                    fit: BoxFit.fill,
-                  ),
+                child: OpenContainer(
+                  closedShape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                  transitionDuration: const Duration(milliseconds: 1000),
+                  openBuilder: (contextx, _) {
+                    return MealDetailScreen(
+                      meal: meal,
+                    );
+                  },
+                  closedBuilder: (context, openContainer) {
+                    return GestureDetector(
+                      onTap: openContainer,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: Image.asset(
+                          meal.imagePath,
+                          width: 150,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               Flexible(
