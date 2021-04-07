@@ -1,4 +1,4 @@
-import 'file:///C:/Users/rosti/AndroidStudioProjects/cours/lib/pages/profile_screen.dart';
+import 'pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
