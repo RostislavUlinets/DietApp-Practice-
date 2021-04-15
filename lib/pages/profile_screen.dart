@@ -16,7 +16,8 @@ class ProfileScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     final today = DateTime.now();
-    //Нижня навігація
+    //----------------------------------------------
+    //ПАНЕЛЬ НАВІГАЦІЇ
     return Scaffold(
       backgroundColor: const Color(0xFFE9E9E9),
       bottomNavigationBar: ClipRRect(
@@ -64,12 +65,13 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
       ),
-      //Верхня секція основного екрану
+      //----------------------------------------------
+      //РОЗДІЛ ДІАГРАМИ
       body: Stack(
         children: <Widget>[
           Positioned(
             top: 0,
-            height: height * 0.37,
+            height: height * 0.34,
             left: 0,
             right: 0,
             child: ClipRRect(
@@ -78,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
               child: Container(
                 color: Colors.white,
                 padding: const EdgeInsets.only(
-                    top: 50, left: 32, right: 16, bottom: 10),
+                    top: 28, left: 32, right: 16, bottom: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -155,12 +157,14 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
+          //----------------------------------
+          //СЕКЦІЯ ЇЖІ
           Positioned(
-            top: height * 0.38,
+            top: height * 0.36,
             left: 0,
             right: 0,
             child: Container(
-              height: height * 0.57,
+              height: height * 0.55,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -193,8 +197,10 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
+                  //-----------------------------------
+                  //СЕКЦІЯ ТРЕНУВАНЬ
                   Expanded(
                     child: OpenContainer(
                       closedElevation: 0,
@@ -330,6 +336,7 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class _IngredientProgress extends StatelessWidget {
+
   final String ingredient;
   final int leftAmount;
   final double progress, width;
