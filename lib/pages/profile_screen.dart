@@ -16,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     final today = DateTime.now();
+    final meal = meals();
     //----------------------------------------------
     //ПАНЕЛЬ НАВІГАЦІЇ
     return Scaffold(
@@ -190,8 +191,9 @@ class ProfileScreen extends StatelessWidget {
                           SizedBox(
                             width: 32,
                           ),
-                          for (int i = 0; i < meals.length; i++)
-                            _MealCard(meal: meals[i]),
+
+                              for (int i = 0; i < meal.length; i++)
+                                _MealCard(meal: meal[i]),
                         ],
                       ),
                     ),
