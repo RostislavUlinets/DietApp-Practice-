@@ -20,52 +20,7 @@ class ProfileScreen extends StatelessWidget {
     //----------------------------------------------
     //ПАНЕЛЬ НАВІГАЦІЇ
     return Scaffold(
-      backgroundColor: const Color(0xFFE9E9E9),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
-        child: BottomNavigationBar(
-          iconSize: 30,
-          selectedIconTheme: IconThemeData(color: const Color(0xFF200087)),
-          unselectedIconTheme: IconThemeData(
-            color: Colors.black,
-          ),
-          items: [
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Icon(Icons.home),
-              ),
-              // ignore: deprecated_member_use
-              title: Text(
-                "Home",
-                style: const TextStyle(color: Colors.white10),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                child: Icon(Icons.search),
-                padding: const EdgeInsets.only(top: 8.0),
-              ),
-              // ignore: deprecated_member_use
-              title: Text(
-                "Search",
-                style: const TextStyle(color: Colors.white10),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                child: Icon(Icons.person),
-                padding: const EdgeInsets.only(top: 8.0),
-              ),
-              // ignore: deprecated_member_use
-              title: Text(
-                "Person",
-                style: const TextStyle(color: Colors.white10),
-              ),
-            ),
-          ],
-        ),
-      ),
+      backgroundColor: Color(0xFF616161),
       //----------------------------------------------
       //РОЗДІЛ ДІАГРАМИ
       body: Stack(
@@ -79,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
               borderRadius: const BorderRadius.vertical(
                   bottom: const Radius.circular(40)),
               child: Container(
-                color: Colors.white,
+                color: Color(0xFF616161),
                 padding: const EdgeInsets.only(
                     top: 28, left: 32, right: 16, bottom: 10),
                 child: Column(
@@ -94,20 +49,19 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        "Hello,David",
+                        "Your daily progress",
                         style: TextStyle(
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w700,
                           fontSize: 24,
                           color: Colors.black,
                         ),
                       ),
-                      trailing:
-                          ClipOval(child: Image.asset("assets/userImage.png")),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         _RadialProgress(
                           width: width * 0.35,
@@ -117,40 +71,7 @@ class ProfileScreen extends StatelessWidget {
                         SizedBox(
                           width: 10,
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            _IngredientProgress(
-                              ingredient: "Protein",
-                              progress: 0.3,
-                              progressColor: Colors.green,
-                              leftAmount: 72,
-                              width: width * 0.3,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            _IngredientProgress(
-                              ingredient: "Carbs",
-                              progress: 0.2,
-                              progressColor: Colors.red,
-                              leftAmount: 252,
-                              width: width * 0.3,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            _IngredientProgress(
-                              ingredient: "Fat",
-                              progress: 0.1,
-                              progressColor: Colors.yellow,
-                              leftAmount: 61,
-                              width: width * 0.3,
-                            ),
-                          ],
-                        ),
+
                       ],
                     ),
                   ],
@@ -165,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: Container(
-              height: height * 0.55,
+              height: height * 0.62,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -178,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       "MEALS FOR TODAY",
                       style: const TextStyle(
-                          color: Colors.blueGrey,
+                          color: Color(0xFF000000),
                           fontSize: 16,
                           fontWeight: FontWeight.w700),
                     ),
@@ -191,7 +112,6 @@ class ProfileScreen extends StatelessWidget {
                           SizedBox(
                             width: 32,
                           ),
-
                               for (int i = 0; i < meal.length; i++)
                                 _MealCard(meal: meal[i]),
                         ],
@@ -208,7 +128,7 @@ class ProfileScreen extends StatelessWidget {
                       closedElevation: 0,
                       transitionType: ContainerTransitionType.fade,
                       transitionDuration: const Duration(milliseconds: 1000),
-                      closedColor: const Color(0xFFE9E9E9),
+                      closedColor: const Color(0xFF616161),
                       openBuilder: (context, _) {
                         return WorkoutScreen();
                       },
@@ -225,8 +145,8 @@ class ProfileScreen extends StatelessWidget {
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 colors: [
-                                  const Color(0xFF20008B),
-                                  const Color(0xFF200087),
+                                  const Color(0xFFEEEEEE),
+                                  const Color(0xFFC1C1C1),
                                 ],
                               ),
                             ),
@@ -242,7 +162,7 @@ class ProfileScreen extends StatelessWidget {
                                   child: Text(
                                     "YOUR NEXT WORKOUT",
                                     style: TextStyle(
-                                      color: Colors.white70,
+                                      color: Color(0xFF616161),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -254,7 +174,7 @@ class ProfileScreen extends StatelessWidget {
                                   child: Text(
                                     "UPPER BODY",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Color(0xFF616161),
                                       fontSize: 24,
                                       fontWeight: FontWeight.w800,
                                     ),
@@ -270,7 +190,7 @@ class ProfileScreen extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20)),
-                                          color: const Color(0xFF5B4D9D),
+                                          color: const Color(0xFF616161),
                                         ),
                                         padding: const EdgeInsets.all(10),
                                         child: Image.asset(
@@ -287,7 +207,7 @@ class ProfileScreen extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20)),
-                                          color: const Color(0xFF5B4D9D),
+                                          color: const Color(0xFF616161),
                                         ),
                                         padding: const EdgeInsets.all(10),
                                         child: Image.asset(
@@ -304,7 +224,7 @@ class ProfileScreen extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20)),
-                                          color: const Color(0xFF5B4D9D),
+                                          color: const Color(0xFF616161),
                                         ),
                                         padding: const EdgeInsets.all(10),
                                         child: Image.asset(
@@ -337,68 +257,6 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-class _IngredientProgress extends StatelessWidget {
-
-  final String ingredient;
-  final int leftAmount;
-  final double progress, width;
-  final Color progressColor;
-
-  const _IngredientProgress(
-      {Key key,
-      this.ingredient,
-      this.leftAmount,
-      this.progress,
-      this.progressColor,
-      this.width})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          ingredient.toUpperCase(),
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Stack(
-              children: [
-                Container(
-                  height: 10,
-                  width: width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    color: Colors.black12,
-                  ),
-                ),
-                Container(
-                  height: 10,
-                  width: width * progress,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    color: progressColor,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text("${leftAmount} g left"),
-          ],
-        ),
-      ],
-    );
-  }
-}
 
 class _RadialProgress extends StatelessWidget {
   final double height, width, progress;
@@ -425,7 +283,7 @@ class _RadialProgress extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.w700,
-                    color: const Color(0xFF200087),
+                    color: const Color(0xFFEEEEEE),
                   ),
                 ),
                 TextSpan(text: "\n"),
@@ -434,7 +292,7 @@ class _RadialProgress extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xFF200087),
+                    color: const Color(0xFFEEEEEE),
                   ),
                 )
               ],
@@ -455,7 +313,7 @@ class _RadialPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
       ..strokeWidth = 10
-      ..color = Color(0xFF200087)
+      ..color = Color(0xFFEEEEEE)
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
@@ -496,6 +354,7 @@ class _MealCard extends StatelessWidget {
         child: Material(
           borderRadius: BorderRadius.all(Radius.circular(20)),
           elevation: 4,
+          color: Color(0xFFEEEEEE),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
@@ -541,7 +400,7 @@ class _MealCard extends StatelessWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
-                          color: Colors.blueGrey,
+                          color: Color(0xFF616161),
                         ),
                       ),
                       Text(
@@ -557,7 +416,7 @@ class _MealCard extends StatelessWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
-                          color: Colors.blueGrey,
+                          color: Color(0xFF616161),
                         ),
                       ),
                       Row(
@@ -575,7 +434,7 @@ class _MealCard extends StatelessWidget {
                             style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
-                              color: Colors.blueGrey,
+                              color: Color(0xFF616161),
                             ),
                           ),
                         ],

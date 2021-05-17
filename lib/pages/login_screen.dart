@@ -16,7 +16,7 @@ class LoginView extends StatelessWidget {
         children: <Widget>[
           Container(
             height: size.height - 200,
-            color: Colors.blueAccent,
+            color: Color(0xFF616161)
           ),
           AnimatedPositioned(
             duration: Duration(milliseconds: 500),
@@ -78,7 +78,7 @@ class LoginView extends StatelessWidget {
                     Text(
                       'Forgot password?',
                       style: TextStyle(
-                        color: Colors.blueAccent,
+                          color: Color(0xFF616161),
                       ),
                     ),
                   ],
@@ -135,16 +135,16 @@ class TextFieldWidget extends StatelessWidget {
       onChanged: onChanged,
       obscureText: obscureText,
       style: TextStyle(
-        color: Colors.blueAccent,
+        color: Color(0xFF616161),
         fontSize: 14,
       ),
-      cursorColor: Colors.blueAccent,
+      cursorColor: Color(0xFF616161),
       decoration: InputDecoration(
         labelText: hintText,
         prefixIcon: Icon(
           prefixIconData,
           size: 18,
-          color: Colors.blueAccent,
+          color: Color(0xFF616161),
         ),
         filled: true,
         enabledBorder: UnderlineInputBorder(
@@ -153,7 +153,7 @@ class TextFieldWidget extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.blueAccent)),
+            borderSide: BorderSide(color: Color(0xFF616161),),),
         suffixIcon: GestureDetector(
           onTap: () {
             model.isVisible = !model.isVisible;
@@ -161,11 +161,11 @@ class TextFieldWidget extends StatelessWidget {
           child: Icon(
             suffixIconData,
             size: 18,
-            color: Colors.blueAccent,
+            color: Color(0xFF616161),
           ),
         ),
-        labelStyle: TextStyle(color: Colors.blueAccent),
-        focusColor: Colors.blueAccent,
+        labelStyle: TextStyle(color: Color(0xFF616161),),
+        focusColor: Color(0xFF616161),
       ),
     );
   }
@@ -182,11 +182,11 @@ class ButtonWidget extends StatelessWidget {
     return Material(
       child: Ink(
         decoration: BoxDecoration(
-          color: hasBorder ? Colors.white : Colors.blueAccent,
+          color: hasBorder ? Colors.white : Color(0xFF616161),
           borderRadius: BorderRadius.circular(10),
           border: hasBorder
               ? Border.all(
-                  color: Colors.blueAccent,
+                  color: Color(0xFF616161),
                   width: 1,
                 )
               : Border.fromBorderSide(BorderSide.none),
@@ -199,7 +199,7 @@ class ButtonWidget extends StatelessWidget {
               child: Text(
                 title,
                 style: TextStyle(
-                  color: hasBorder ? Colors.blueAccent : Colors.white,
+                  color: hasBorder ? Color(0xFF616161) : Colors.white,
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
                 ),
