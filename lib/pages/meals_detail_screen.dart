@@ -15,7 +15,7 @@ class MealDetailScreen extends StatelessWidget {
           SliverAppBar(
             snap: true,
             floating: true,
-            backgroundColor: const Color(0xFF200087),
+            backgroundColor: const Color(0xFF616161),
             expandedHeight: 300,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30))),
@@ -42,7 +42,7 @@ class MealDetailScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
                       fontSize: 14,
-                      color: Colors.blueGrey,
+                      color: Color(0xFF616161),
                     ),
                   ),
                   subtitle: Text(
@@ -108,7 +108,7 @@ class MealDetailScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
                       fontSize: 14,
-                      color: Colors.blueGrey,
+                      color: Color(0xFF616161),
                     ),
                   ),
                 ),
@@ -145,7 +145,7 @@ class MealDetailScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
                       fontSize: 14,
-                      color: Colors.blueGrey,
+                      color: Color(0xFF616161),
                     ),
                   ),
                 ),

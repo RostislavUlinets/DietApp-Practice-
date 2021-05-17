@@ -8,7 +8,7 @@ class WorkoutScreen extends StatelessWidget {
     final today = DateTime.now();
 
     return Scaffold(
-      backgroundColor: const Color(0xFF200087),
+      backgroundColor: const Color(0xFF616161),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
           horizontal: 15,
@@ -41,7 +41,7 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
               subtitle: Text(
-                "Upper Body",
+                name(),
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
                   fontSize: 24,
@@ -100,26 +100,26 @@ class WorkoutScreen extends StatelessWidget {
             SizedBox(
               height: 15
             ),
-            for (int i = 0; i < upperBody.length; i++)
+            for (int i = 0; i < work().length; i++)
               Column(
                 children: <Widget>[
-                  for (int j = 0; j < upperBody[i].length; j++)
+                  for (int j = 0; j < work()[i].length; j++)
                     ListTile(
                       leading: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
-                          color: const Color(0xFF5B4D9D),
+                          color: const Color(0xFF383737),
                         ),
                         padding: const EdgeInsets.all(6),
                         child: Image.asset(
-                          upperBody[i][j].imagePath,
+                          work()[i][j].imagePath,
                           width: 45,
                           height: 45,
                           color: Colors.white,
                         ),
                       ),
                       title: Text(
-                        upperBody[i][j].name,
+                        work()[i][j].name,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 22,
@@ -127,16 +127,17 @@ class WorkoutScreen extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        upperBody[i][j].instruction,
+                        work()[i][j].instruction,
                         style: TextStyle(
                           color: Colors.white70,
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+                      minVerticalPadding: 15,
                     ),
                   SizedBox(
-                    height: 25,
+                    height: 50,
                   ),
                 ],
               ),
@@ -145,4 +146,18 @@ class WorkoutScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+
+String name(){
+  if(DateFormat('EEEE').format(DateTime.now()) == "Monday" || DateFormat('EEEE').format(DateTime.now()) == "Friday")
+    return "Chest And Triceps";
+  else if (DateFormat('EEEE').format(DateTime.now()) == "Tuesday")
+    return "Back And Biceps";
+  else if (DateFormat('EEEE').format(DateTime.now()) == "Wednesday")
+    return "Legs And Abs";
+  else if (DateFormat('EEEE').format(DateTime.now()) == "Thursday")
+    return "Back And Shoulders";
+  else
+    return "REST";
 }
