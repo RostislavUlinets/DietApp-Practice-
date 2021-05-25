@@ -1,11 +1,19 @@
+import 'package:cours/model/user.dart';
 import 'package:cours/pages/profile_screen.dart';
+import 'package:cours/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'dart:math' as Math;
 
 
 
 class LoginView extends StatelessWidget {
+
+
+  String _email,_password;
+  AuthService _authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -56,6 +64,7 @@ class LoginView extends StatelessWidget {
                   suffixIconData: model.isValid ? Icons.check : null,
                   onChanged: (value) {
                     model.isValidEmail(value);
+                    _email = value;
                   },
                 ),
                 SizedBox(
@@ -71,6 +80,9 @@ class LoginView extends StatelessWidget {
                       suffixIconData: model.isVisible
                           ? Icons.visibility
                           : Icons.visibility_off,
+                      onChanged: (value){
+                        _password = value;
+                      },
                     ),
                     SizedBox(
                       height: 10,
@@ -92,17 +104,27 @@ class LoginView extends StatelessWidget {
                     hasBorder: false,
                   ),
                   onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context){
-                     return ProfileScreen(); 
-                    }));
+                    _loginButtonAction();
+                    /*Navigator.push(context,MaterialPageRoute(builder: (context){
+                     return ProfileScreen();
+                    }));*/
                   },
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                ButtonWidget(
-                  title: 'Sing Up',
-                  hasBorder: true,
+                GestureDetector(
+                  child: ButtonWidget(
+                    title: 'Sing Up',
+                    hasBorder: true,
+                    
+                  ),
+                  onTap:(){
+                    _registrationButtonAction();
+                    /*Navigator.push(context,MaterialPageRoute(builder: (context){
+                     return ProfileScreen();
+                    }));*/
+                  },
                 ),
               ],
             ),
@@ -111,6 +133,47 @@ class LoginView extends StatelessWidget {
       ),
     );
   }
+
+  void _loginButtonAction() async{
+    if(_email.isEmpty || _password.isEmpty) return;
+
+    LocalUser user = await _authService.signInWithEmailAndPassword(_email.trim(), _password.trim());
+    if(user == null){
+      Fluttertoast.showToast(
+          msg: "Login Faild!Please check your login/password",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }else{
+
+    }
+  }
+
+  void _registrationButtonAction() async{
+    if(_email.isEmpty || _password.isEmpty) return;
+
+    LocalUser user = await _authService.registerWithEmailAndPassword(_email.trim(), _password.trim());
+    if(user == null){
+      Fluttertoast.showToast(
+          msg: "Login Faild!Please check your login/password",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }else{
+      _email = "";
+      _password = "";
+    }
+  }
+
+
 }
 
 class TextFieldWidget extends StatelessWidget {
@@ -321,4 +384,6 @@ class ClipperWidget extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper oldClipper) => true;
+
+
 }

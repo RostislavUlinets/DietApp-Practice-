@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:cours/services/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -13,8 +14,14 @@ import 'package:vector_math/vector_math_64.dart' as math;
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery
+        .of(context)
+        .size
+        .height;
+    final width = MediaQuery
+        .of(context)
+        .size
+        .width;
     final today = DateTime.now();
     final meal = meals();
     //----------------------------------------------
@@ -31,9 +38,11 @@ class ProfileScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: ClipRRect(
+
               borderRadius: const BorderRadius.vertical(
                   bottom: const Radius.circular(40)),
               child: Container(
+
                 color: Color(0xFF616161),
                 padding: const EdgeInsets.only(
                     top: 28, left: 32, right: 16, bottom: 10),
@@ -42,7 +51,8 @@ class ProfileScreen extends StatelessWidget {
                   children: <Widget>[
                     ListTile(
                       title: Text(
-                        "${DateFormat("EEEE").format(today)}, ${DateFormat("d MMM").format(today)}",
+                        "${DateFormat("EEEE").format(today)}, ${DateFormat(
+                            "d MMM").format(today)}                Exit",
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
@@ -56,6 +66,9 @@ class ProfileScreen extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
+                      onTap: () {
+                        AuthService().logOut();
+                      },
                     ),
                     SizedBox(
                       height: 10,
@@ -112,8 +125,8 @@ class ProfileScreen extends StatelessWidget {
                           SizedBox(
                             width: 32,
                           ),
-                              for (int i = 0; i < meal.length; i++)
-                                _MealCard(meal: meal[i]),
+                          for (int i = 0; i < meal.length; i++)
+                            _MealCard(meal: meal[i]),
                         ],
                       ),
                     ),
@@ -140,7 +153,7 @@ class ProfileScreen extends StatelessWidget {
                                 bottom: 10, left: 32, right: 32),
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular((30))),
+                              BorderRadius.all(Radius.circular((30))),
                               gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
@@ -170,9 +183,9 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(top: 4, left: 16),
+                                  const EdgeInsets.only(top: 4, left: 16),
                                   child: Text(
-                                    "UPPER BODY",
+                                    name(),
                                     style: TextStyle(
                                       color: Color(0xFF616161),
                                       fontSize: 24,
@@ -201,7 +214,7 @@ class ProfileScreen extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 10,
+                                        width: 20,
                                       ),
                                       Container(
                                         decoration: BoxDecoration(
@@ -218,7 +231,7 @@ class ProfileScreen extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 10,
+                                        width: 20,
                                       ),
                                       Container(
                                         decoration: BoxDecoration(
@@ -228,7 +241,7 @@ class ProfileScreen extends StatelessWidget {
                                         ),
                                         padding: const EdgeInsets.all(10),
                                         child: Image.asset(
-                                          "assets/hand_biceps.png",
+                                          "assets/men-legs.png",
                                           width: 50,
                                           height: 50,
                                           color: Colors.white,
@@ -268,7 +281,7 @@ class _RadialProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: _RadialPainter(
-        progress: 0.7,
+        progress: 1,
       ),
       child: Container(
         height: height,
@@ -279,7 +292,7 @@ class _RadialProgress extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "1731",
+                  text: "1474",
                   style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.w700,
@@ -345,9 +358,10 @@ class _MealCard extends StatelessWidget {
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => MealDetailScreen(
-                meal: meal,
-              ),
+              builder: (context) =>
+                  MealDetailScreen(
+                    meal: meal,
+                  ),
             ),
           );
         },
@@ -362,7 +376,8 @@ class _MealCard extends StatelessWidget {
               Flexible(
                 fit: FlexFit.tight,
                 child: OpenContainer(
-                  closedShape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                  closedShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
                   transitionDuration: const Duration(milliseconds: 1000),
                   openBuilder: (contextx, _) {
                     return MealDetailScreen(
@@ -450,4 +465,18 @@ class _MealCard extends StatelessWidget {
       ),
     );
   }
+}
+
+String name() {
+  if (DateFormat('EEEE').format(DateTime.now()) == "Monday" ||
+      DateFormat('EEEE').format(DateTime.now()) == "Friday")
+    return "Chest And Triceps";
+  else if (DateFormat('EEEE').format(DateTime.now()) == "Tuesday")
+    return "Back And Biceps";
+  else if (DateFormat('EEEE').format(DateTime.now()) == "Wednesday")
+    return "Legs And Abs";
+  else if (DateFormat('EEEE').format(DateTime.now()) == "Thursday")
+    return "Back And Shoulders";
+  else
+    return "REST";
 }
